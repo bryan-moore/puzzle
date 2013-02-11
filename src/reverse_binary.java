@@ -3,30 +3,34 @@
  * date: 2/11/13
  */
 
-import java.util.Scanner;
+import java.io.*;
 import static java.lang.Integer.*;
 
 public class reverse_binary {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Input integer:");
-        int intToConvert = scan.nextInt();
+        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+        String s;
 
-        if(intToConvert > 0 || intToConvert < 1000000000) { //int is within range
+        while ((s = read.readLine()) != null && s.length() != 0){
 
-            String intConverted = toBinaryString(intToConvert); //convert input to binary
-            char[] myArray = intConverted.toCharArray(); //convert binary to char array
+            int intToConvert = Integer.parseInt(s);
 
-            reverseMyArray(myArray); //reverse elements in array
-            String newBinary = new String(myArray);
+            if(intToConvert > 0 || intToConvert < 1000000000) { //int is within range
 
-            int newInt = Integer.parseInt(newBinary,2); //convert back to integer
-            System.out.println(newInt);
+                String intConverted = toBinaryString(intToConvert); //convert input to binary
+                char[] myArray = intConverted.toCharArray(); //convert binary to char array
+
+                reverseMyArray(myArray); //reverse elements in array
+                String newBinary = new String(myArray);
+
+                int newInt = Integer.parseInt(newBinary,2); //convert back to integer
+                System.out.println(newInt);
+            }
+            else
+                System.out.println("Invalid integer.");
         }
-        else
-            System.out.println("Invalid integer.");
     }
 
     public static void reverseMyArray(char[] array) {
