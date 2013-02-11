@@ -1,39 +1,48 @@
 /**
- * @author bryan
- * date: 2/10/13
+ * @author bryan moore
+ * date: 2/11/13
  */
 
 import java.util.Scanner;
-import static java.lang.Integer.toBinaryString;
+import static java.lang.Integer.*;
 
 public class reverse_binary {
 
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-
         System.out.println("Please input your number:");
-
         int intToConvert = scan.nextInt();
-        String intConverted = toBinaryString(intToConvert);
-        char[] arr = intConverted.toCharArray();
-        boolean[] binaryarray = new boolean[intConverted.length()];
 
-        for(int i; i<intConverted.length();i++){
-            if (arr[i] == '1'){
-                binaryarray[i] = true;
-            }
-            else if (arr[i] == '0'){
-                binaryarray[i] = false;
-            }
+        String intConverted = toBinaryString(intToConvert); //convert input to binary
+        char[] myArray = intConverted.toCharArray(); //convert binary to char array
+
+        reverseMyArray(myArray); //reverse elements in array
+        String newBinary = new String(myArray);
+
+        int newInt = Integer.parseInt(newBinary,2); //convert back to integer
+        System.out.println(newInt);
+    }
+
+    public static void reverseMyArray(char[] array) {
+        // Takes a char array as input, then
+        // using indexes at opposite ends, switches
+        // values until the i & j meet in the middle
+        // of the array.
+        if (array == null) {
+            return;
         }
 
+        int i = 0;
+        int j = array.length - 1;
+        char tmp;
 
-        System.out.println("You entered:" + intConverted);
+        while (j > i) {
+            tmp = array[j];
+            array[j] = array[i];
+            array[i] = tmp;
+            j--;
+            i++;
+        }
     }
-
-    public printFromArrat(String) {
-
-    }
-
 }
