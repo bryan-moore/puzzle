@@ -11,17 +11,22 @@ public class reverse_binary {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("Please input your number:");
+        System.out.println("Input integer:");
         int intToConvert = scan.nextInt();
 
-        String intConverted = toBinaryString(intToConvert); //convert input to binary
-        char[] myArray = intConverted.toCharArray(); //convert binary to char array
+        if(intToConvert > 0 || intToConvert < 1000000000) { //int is within range
 
-        reverseMyArray(myArray); //reverse elements in array
-        String newBinary = new String(myArray);
+            String intConverted = toBinaryString(intToConvert); //convert input to binary
+            char[] myArray = intConverted.toCharArray(); //convert binary to char array
 
-        int newInt = Integer.parseInt(newBinary,2); //convert back to integer
-        System.out.println(newInt);
+            reverseMyArray(myArray); //reverse elements in array
+            String newBinary = new String(myArray);
+
+            int newInt = Integer.parseInt(newBinary,2); //convert back to integer
+            System.out.println(newInt);
+        }
+        else
+            System.out.println("Invalid integer.");
     }
 
     public static void reverseMyArray(char[] array) {
